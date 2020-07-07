@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>部署vue前端项目到服务器上（nginx处理跨域） | 微笑的蛋壳呀</title>
+    <meta name="description" content="饭要一口一口吃，路要一步一步走">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.f3e3bf20.css" as="style"><link rel="preload" href="/assets/js/app.f3aa7ae7.js" as="script"><link rel="preload" href="/assets/js/2.8b2ad26f.js" as="script"><link rel="preload" href="/assets/js/6.44f369e7.js" as="script"><link rel="prefetch" href="/assets/js/10.8a0e92ce.js"><link rel="prefetch" href="/assets/js/11.f3ad8ed2.js"><link rel="prefetch" href="/assets/js/12.3fa3dcfc.js"><link rel="prefetch" href="/assets/js/13.0e84be05.js"><link rel="prefetch" href="/assets/js/14.1a723e63.js"><link rel="prefetch" href="/assets/js/15.0d028931.js"><link rel="prefetch" href="/assets/js/16.31b6de59.js"><link rel="prefetch" href="/assets/js/17.eeb4f597.js"><link rel="prefetch" href="/assets/js/18.681ccb12.js"><link rel="prefetch" href="/assets/js/3.dee5c784.js"><link rel="prefetch" href="/assets/js/4.fb7e678d.js"><link rel="prefetch" href="/assets/js/5.f36453ad.js"><link rel="prefetch" href="/assets/js/7.49f031c1.js"><link rel="prefetch" href="/assets/js/8.cb967335.js"><link rel="prefetch" href="/assets/js/9.b02a9ea0.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f3e3bf20.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">微笑的蛋壳呀</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/frontEnd/" class="nav-link router-link-active">前端</a></div><div class="nav-item"><a href="/backEnd/" class="nav-link">后台</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/sherry_chan" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  csdn
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/smilechenjia/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/frontEnd/" class="nav-link router-link-active">前端</a></div><div class="nav-item"><a href="/backEnd/" class="nav-link">后台</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/sherry_chan" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  csdn
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/smilechenjia/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/frontEnd/" class="sidebar-link">使用vuepress搭建博客</a></li><li><a href="/frontEnd/nginx.html" class="active sidebar-link">部署vue前端项目到服务器上（nginx处理跨域）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frontEnd/nginx.html#安装nginx" class="sidebar-link">安装nginx</a></li><li class="sidebar-sub-header"><a href="/frontEnd/nginx.html#配置nginx" class="sidebar-link">配置nginx</a></li><li class="sidebar-sub-header"><a href="/frontEnd/nginx.html#跟进配置文件做下一步操作" class="sidebar-link">跟进配置文件做下一步操作</a></li></ul></li><li><a href="/frontEnd/vue.html" class="sidebar-link">如何使用vue-cli 3.0搭建多页面应用</a></li><li><a href="/frontEnd/node.html" class="sidebar-link">如何将node.js部署到服务器上</a></li><li><a href="/frontEnd/nginxh5.html" class="sidebar-link">如何使用nginx解决前端跨域问题</a></li><li><a href="/frontEnd/mobile.html" class="sidebar-link">用H5开发移动端页面的两三事</a></li><li><a href="/frontEnd/rnmac.html" class="sidebar-link">Mac下搭建react-native环境(ios)</a></li><li><a href="/frontEnd/rn1.html" class="sidebar-link">说说react-native那些事儿</a></li><li><a href="/frontEnd/face.html" class="sidebar-link">人脸识别前端 demo</a></li><li><a href="/frontEnd/ipu.html" class="sidebar-link">如何在ipu里使用vue</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="部署vue前端项目到服务器上（nginx处理跨域）"><a href="#部署vue前端项目到服务器上（nginx处理跨域）" aria-hidden="true" class="header-anchor">#</a> 部署vue前端项目到服务器上（nginx处理跨域）</h1> <p><code>2019-08-16</code></p> <blockquote><p>注：本文选择了nginx做web服务器。
+因为在本文vue前端项目中，需要从接口获取数据，可是数据与vue前端项目是在同一ip地址但不同端口号，所以需要跨域读取数据。本文的跨域处理是使用了nginx。</p></blockquote> <div class="tip custom-block"><p class="custom-block-title">环境配置：</p> <p>阿里云服务器（ubuntu 64bit）</p> <p>xshell</p> <p>nginx</p></div> <h2 id="安装nginx"><a href="#安装nginx" aria-hidden="true" class="header-anchor">#</a> 安装nginx</h2> <p>使用xshell登录到阿里云服务器，之后安装nginx（本文安装到/etc下）</p> <div class="language- extra-class"><pre class="language-text"><code>cd /etc
+apt-get update
+apt-get install nginx
+</code></pre></div><h2 id="配置nginx"><a href="#配置nginx" aria-hidden="true" class="header-anchor">#</a> 配置nginx</h2> <ul><li>打开/etc/nginx/nginx.conf文件</li></ul> <div class="language- extra-class"><pre class="language-text"><code>vim /etc/nginx/nginx.conf
+</code></pre></div><ul><li>在nginx.conf中配置如下：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+events {
+        worker_connections 768;
+        # multi_accept on;
+}
+http {
+ 
+        ##
+        # Basic Settings
+        ##
+ 
+        tcp_nodelay on;
+        keepalive_timeout 65;
+        types_hash_max_size 2048;
+        # server_tokens off;
+ 
+        # server_names_hash_bucket_size 64;
+        # server_name_in_redirect off;
+ 
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+ 
+        ##
+        # SSL Settings
+        ##
+ 
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE
+        ssl_prefer_server_ciphers on;
+ 
+        ##
+        # Logging Settings
+        ##
+ 
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log;
+ 
+        ##
+        # Gzip Settings
+        ##
+ 
+        gzip on;
+        gzip_disable &quot;msie6&quot;;
+ 
+        # gzip_vary on;
+        # gzip_proxied any;
+        # gzip_comp_level 6;
+        # gzip_buffers 16 8k;
+        # gzip_http_version 1.1;
+ 
+        ##
+        # Virtual Host Configs
+        ##
+ 
+ 
+        gzip on;
+        gzip_disable &quot;msie6&quot;;
+ 
+        # gzip_vary on;
+        # gzip_proxied any;
+        # gzip_comp_level 6;
+        # gzip_buffers 16 8k;
+        # gzip_http_version 1.1;
+        # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+ 
+        ##
+        # Virtual Host Configs
+        ##
+ 
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+        #以下为我们添加的内容
+       server {             
+              listen 80;
+              server_name your-ipaddress;   #阿里云服务器的ip地址
+ 
+              root /home/my-project/;
+              index index.html;
+              location /datas {
+              rewrite ^.+datas/?(.*)$ /$1 break;
+              include uwsgi_params;
+              proxy_pass http://ip:port;
+                              }
+             }
+}
+</code></pre></div><h2 id="跟进配置文件做下一步操作"><a href="#跟进配置文件做下一步操作" aria-hidden="true" class="header-anchor">#</a> 跟进配置文件做下一步操作</h2> <ol><li>配置文件中的listen是nginx监听的端口号，所以需要在阿里云服务器上为80端口添加安全组规则</li></ol> <p>在本地的浏览器登录阿里云服务器-&gt;进入控制台-&gt;点击安全组-&gt;点击配置规则-&gt;点击添加安全组规则，之后配置如下（注：入方向和出方向都要配置）</p> <p><img src="/assets/img/01.13ed9232.png" alt="avatar"></p> <ol start="2"><li>配置文件中的root和index那两行表示我们把项目文件夹放在/home/my-project下</li></ol> <p>例如有两个项目文件夹分别为test1，test2，里面都有index.html。则目录结构如下</p> <div class="language- extra-class"><pre class="language-text"><code>/home
+
+       |--my-project
+
+              |--test1
+
+                      |--index.html
+
+              |--test2
+
+                      |--index.html
+</code></pre></div><p>如果在浏览器输入如下</p> <div class="language- extra-class"><pre class="language-text"><code>http://ip/test1/index.html
+</code></pre></div><p>服务器便会在/home/my-project中找到test1下的index.html执行；</p> <p>如果在浏览器中输入如下</p> <div class="language- extra-class"><pre class="language-text"><code>http://ip/test2/index.html
+</code></pre></div><p>服务器便会在/home/my-project中找到test2下的index.html执行；</p> <p>这样便可以在服务器下放多个项目文件夹。</p> <p>所以我们也需要在本地项目的config/index.js里的build下进行修改,如果要把项目放到test1下，则</p> <div class="language- extra-class"><pre class="language-text"><code>assetsPublicPath: '/test1/'
+</code></pre></div><p>如果用到了vue-router，则修改/router/index.js</p> <div class="language- extra-class"><pre class="language-text"><code>export default new Router({
+  base: '/test1/',   //添加这行
+  linkActiveClass: 'active',
+  routes
+});
+</code></pre></div><ol start="3"><li>nginx配置文件中的location则是针对跨域处理，表示把对/datas的请求转发给http://ip:port,本文中这个http://ip:port下就是需要的数据，例如http://ip:port/seller,在本地项目文件中ajax请求数据的地方如下</li></ol> <div class="language- extra-class"><pre class="language-text"><code>      const url = '/datas/seller';
+      this.$http.get(url).then((response) =&gt; {
+        .....
+      });
+</code></pre></div><ol start="4"><li>修改后在本地命令行下运行:cnpm run build 生成dist文件。把dist文件里的index.html和static文件上传到服务器的/home/my-project/test1下，目录结构如下</li></ol> <div class="language- extra-class"><pre class="language-text"><code>/home
+
+       |--my-project
+
+              |--test1
+
+                      |--index.html
+
+                      |--static
+</code></pre></div><ol start="5"><li>启动nginx</li></ol> <div class="language- extra-class"><pre class="language-text"><code>service nginx start
+</code></pre></div><ol start="6"><li>至此项目部署成功，在浏览器下输入如下命令即可访问</li></ol> <div class="language- extra-class"><pre class="language-text"><code>http://ip/test1/index.html  
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/frontEnd/" class="prev router-link-active">
+          使用vuepress搭建博客
+        </a></span> <span class="next"><a href="/frontEnd/vue.html">
+          如何使用vue-cli 3.0搭建多页面应用
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.f3aa7ae7.js" defer></script><script src="/assets/js/2.8b2ad26f.js" defer></script><script src="/assets/js/6.44f369e7.js" defer></script>
+  </body>
+</html>

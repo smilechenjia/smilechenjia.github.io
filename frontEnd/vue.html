@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>如何使用vue-cli 3.0搭建多页面应用 | 微笑的蛋壳呀</title>
+    <meta name="description" content="饭要一口一口吃，路要一步一步走">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.f3e3bf20.css" as="style"><link rel="preload" href="/assets/js/app.f3aa7ae7.js" as="script"><link rel="preload" href="/assets/js/2.8b2ad26f.js" as="script"><link rel="preload" href="/assets/js/17.eeb4f597.js" as="script"><link rel="prefetch" href="/assets/js/10.8a0e92ce.js"><link rel="prefetch" href="/assets/js/11.f3ad8ed2.js"><link rel="prefetch" href="/assets/js/12.3fa3dcfc.js"><link rel="prefetch" href="/assets/js/13.0e84be05.js"><link rel="prefetch" href="/assets/js/14.1a723e63.js"><link rel="prefetch" href="/assets/js/15.0d028931.js"><link rel="prefetch" href="/assets/js/16.31b6de59.js"><link rel="prefetch" href="/assets/js/18.681ccb12.js"><link rel="prefetch" href="/assets/js/3.dee5c784.js"><link rel="prefetch" href="/assets/js/4.fb7e678d.js"><link rel="prefetch" href="/assets/js/5.f36453ad.js"><link rel="prefetch" href="/assets/js/6.44f369e7.js"><link rel="prefetch" href="/assets/js/7.49f031c1.js"><link rel="prefetch" href="/assets/js/8.cb967335.js"><link rel="prefetch" href="/assets/js/9.b02a9ea0.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f3e3bf20.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">微笑的蛋壳呀</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/frontEnd/" class="nav-link router-link-active">前端</a></div><div class="nav-item"><a href="/backEnd/" class="nav-link">后台</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/sherry_chan" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  csdn
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/smilechenjia/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/frontEnd/" class="nav-link router-link-active">前端</a></div><div class="nav-item"><a href="/backEnd/" class="nav-link">后台</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/sherry_chan" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  csdn
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/smilechenjia/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/frontEnd/" class="sidebar-link">使用vuepress搭建博客</a></li><li><a href="/frontEnd/nginx.html" class="sidebar-link">部署vue前端项目到服务器上（nginx处理跨域）</a></li><li><a href="/frontEnd/vue.html" class="active sidebar-link">如何使用vue-cli 3.0搭建多页面应用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frontEnd/vue.html#初始化项目" class="sidebar-link">初始化项目</a></li><li class="sidebar-sub-header"><a href="/frontEnd/vue.html#修改目录成多页面应用" class="sidebar-link">修改目录成多页面应用</a></li><li class="sidebar-sub-header"><a href="/frontEnd/vue.html#配置vue-config-js" class="sidebar-link">配置vue.config.js</a></li><li class="sidebar-sub-header"><a href="/frontEnd/vue.html#打包-运行" class="sidebar-link">打包&amp;运行</a></li></ul></li><li><a href="/frontEnd/node.html" class="sidebar-link">如何将node.js部署到服务器上</a></li><li><a href="/frontEnd/nginxh5.html" class="sidebar-link">如何使用nginx解决前端跨域问题</a></li><li><a href="/frontEnd/mobile.html" class="sidebar-link">用H5开发移动端页面的两三事</a></li><li><a href="/frontEnd/rnmac.html" class="sidebar-link">Mac下搭建react-native环境(ios)</a></li><li><a href="/frontEnd/rn1.html" class="sidebar-link">说说react-native那些事儿</a></li><li><a href="/frontEnd/face.html" class="sidebar-link">人脸识别前端 demo</a></li><li><a href="/frontEnd/ipu.html" class="sidebar-link">如何在ipu里使用vue</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="如何使用vue-cli-3-0搭建多页面应用"><a href="#如何使用vue-cli-3-0搭建多页面应用" aria-hidden="true" class="header-anchor">#</a> 如何使用vue-cli 3.0搭建多页面应用</h1> <p><code>2019-9-29</code></p> <h2 id="初始化项目"><a href="#初始化项目" aria-hidden="true" class="header-anchor">#</a> 初始化项目</h2> <p>使用vue-cli 3.0创建一个项目，项目默认是单页面应用，目录如下：</p> <div class="language- extra-class"><pre class="language-text"><code>|—node_modules
+
+|—public                //模板文件
+
+    |—favicon.ico
+
+    |—index.html    
+
+|—src
+
+     |—assets            //图片，样式等共用文件
+
+     |—components        //共用组件
+
+     |—App.vue           //首页文件
+
+     |—main.js
+
+|—babel.config.js
+
+|—package.json
+
+|—README.md
+
+|—yarn.lock
+</code></pre></div><h2 id="修改目录成多页面应用"><a href="#修改目录成多页面应用" aria-hidden="true" class="header-anchor">#</a> 修改目录成多页面应用</h2> <p>1.（必选）在src文件下新增文件夹，每个文件夹代表一个独立的页面，文件夹里都含有App.vue,main.js,router.js文件</p> <p>2.（必选）在src文件下新增配置文件vue.config.js</p> <p>3.（可选）在src文件下新增文件store.js，可存储数据，被每个独立页面都可取到</p> <p>4.（可选）删除原先src文件下的App.vue，main.js文件</p> <p>最终文件目录如下：</p> <div class="language- extra-class"><pre class="language-text"><code>|—node_modules
+
+|—public                //模板文件
+
+    |—favicon.ico
+
+    |—index.html    
+
+|—src
+
+     |—assets            //图片，样式等共用文件
+
+     |—components        //共用组件
+
+     |—store.js          //共用数据     
+
+     |—page1             //页面1
+
+          |—App.vue
+
+          |—main.js
+
+          |—router.js     
+
+     |—page2              //页面2   
+
+          |—App.vue
+
+          |—main.js
+
+          |—router.js 
+
+|—babel.config.js
+
+|—package.json
+
+|—README.md
+
+|—yarn.lock
+
+|—vue.config.js        //配置文件
+</code></pre></div><h2 id="配置vue-config-js"><a href="#配置vue-config-js" aria-hidden="true" class="header-anchor">#</a> 配置vue.config.js</h2> <p>在该文件下添加每个页面的入口、出口、模版文件，具体配置如下</p> <div class="language- extra-class"><pre class="language-text"><code>module.exports = {
+
+     pages: {
+
+         page1: {         
+
+            entry: 'src/page1/main.js',                   //页面的入口文件
+
+            template: 'public/index.html',                //页面的模板文件
+
+            filename: 'page1.html'                        //页面的出口名称，即build生成的文件名称
+
+        },
+
+       page2: {
+
+          entry: 'src/page2/main.js',
+
+          template: 'public/index.html',
+
+          filename: 'page2.html'
+
+      }
+
+   }
+
+}
+</code></pre></div><h2 id="打包-运行"><a href="#打包-运行" aria-hidden="true" class="header-anchor">#</a> 打包&amp;运行</h2> <p>使用yarn bulid打包文件之后，生成dist文件夹，文件下有每个页面生成的html文件</p> <div class="language- extra-class"><pre class="language-text"><code>|—dist
+
+     |—page1.html
+
+     |—page2.html
+</code></pre></div><p>使用yarn serve运行项目后，在浏览器下输入http://localhost:8080/page1.html  即可访问page1页面</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/frontEnd/nginx.html" class="prev">
+          部署vue前端项目到服务器上（nginx处理跨域）
+        </a></span> <span class="next"><a href="/frontEnd/node.html">
+          如何将node.js部署到服务器上
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.f3aa7ae7.js" defer></script><script src="/assets/js/2.8b2ad26f.js" defer></script><script src="/assets/js/17.eeb4f597.js" defer></script>
+  </body>
+</html>
